@@ -1,0 +1,149 @@
+/* Importar a fonte Lato do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* Estilos globais */
+body {
+    font-family: 'Lato', sans-serif;
+    color: #e0e0e0;
+    background-color: #1a1a2e; /* Fundo escuro */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #00bcd4; /* Azul ciano para títulos */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.alert-error {
+    background-color: #ff4444; /* Vermelho vibrante */
+    color: #ffffff;
+    border: 1px solid #ff4444;
+}
+
+.alert-success {
+    background-color: #00c853; /* Verde vibrante */
+    color: #ffffff;
+    border: 1px solid #00c853;
+}
+
+form {
+    background-color: #16213e; /* Azul mais escuro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid #00bcd4; /* Borda ciano */
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #00bcd4; /* Azul ciano para labels */
+}
+
+input[type="file"],
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #00bcd4; /* Borda ciano */
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    background-color: #1a1a2e; /* Fundo escuro */
+    color: #e0e0e0; /* Texto claro */
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:focus,
+input[type="text"]:focus,
+select:focus {
+    border-color: #00bcd4; /* Borda ciano ao focar */
+    outline: none;
+}
+
+button {
+    background-color: #00bcd4; /* Azul ciano */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #0097a7; /* Azul ciano mais escuro */
+    transform: scale(1.05); /* Efeito de zoom */
+}
+
+.columns-container {
+    margin-top: 20px;
+}
+
+.columns-container h2 {
+    color: #00bcd4; /* Azul ciano */
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.columns-container div {
+    margin-bottom: 15px;
+}
+
+/* Estilo para o botão de download */
+.download-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.download-button a {
+    text-decoration: none;
+}
+
+.download-button button {
+    background-color: #00bcd4; /* Azul ciano */
+}
+
+.download-button button:hover {
+    background-color: #0097a7; /* Azul ciano mais escuro */
+    transform: scale(1.05); /* Efeito de zoom */
+}
+
+/* Efeitos futuristas */
+form, .alert, .columns-container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

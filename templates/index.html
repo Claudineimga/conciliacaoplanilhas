@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conciliação de Planilhas</title>
+    <!-- Importar a fonte Lato do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Conciliação de Planilhas</h1>
+
+    <!-- Exibir mensagens de erro/sucesso -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Formulário para upload de arquivos -->
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('index') }}">
+        <div>
+            <label for="arquivo1">Selecione a primeira planilha:</label>
+            <input type="file" name="arquivo1" accept=".xlsx" required>
+        </div>
+        <div>
+            <label for="arquivo2">Selecione a segunda planilha:</label>
+            <input type="file" name="arquivo2" accept=".xlsx" required>
+        </div>
+        <button type="submit">Carregar Planilhas</button>
+    </form>
+
+    <!-- Exibir colunas e seleção de coluna chave -->
+    {% if show_columns %}
+        <div class="columns-container">
+            <h2>Colunas Disponíveis</h2>
+            <form method="POST" action="{{ url_for('processar') }}">
+                <div>
+                    <label for="coluna1">Selecione a coluna chave da Planilha 1 ({{ arquivo1_name }}):</label>
+                    <select name="coluna1" required>
+                        {% for coluna in colunas_planilha1 %}
+                            <option value="{{ coluna }}">{{ coluna }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="coluna2">Selecione a coluna chave da Planilha 2 ({{ arquivo2_name }}):</label>
+                    <select name="coluna2" required>
+                        {% for coluna in colunas_planilha2 %}
+                            <option value="{{ coluna }}">{{ coluna }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="hidden" name="caminho_arquivo1" value="{{ caminho_arquivo1 }}">
+                <input type="hidden" name="caminho_arquivo2" value="{{ caminho_arquivo2 }}">
+                <button type="submit">Processar Conciliação</button>
+            </form>
+        </div>
+    {% endif %}
+
+    <!-- Botão de download (aparece apenas após sucesso) -->
+    {% if show_download %}
+        <div class="download-button">
+            <a href="{{ url_for('download') }}" download>
+                <button>Baixar Arquivo</button>
+            </a>
+        </div>
+    {% endif %}
+</body>
+</html>
