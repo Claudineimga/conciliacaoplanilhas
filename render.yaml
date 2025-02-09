@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: conciliacao-planilhas
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    port: 10000
